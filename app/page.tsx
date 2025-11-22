@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { FaStethoscope, FaClock, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { FaStethoscope, FaClock, FaCheckCircle, FaTimesCircle, FaUser, FaArrowRight } from "react-icons/fa";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Dot } from "recharts";
 
 export default function Home() {
@@ -92,45 +92,48 @@ export default function Home() {
               </div>
             </button>
 
-            {/* Fila 1 y 2 - Columna 2: Historial de Casos Clínicos */}
-            <div className="row-span-2 bg-white rounded-lg shadow-md border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
+            {/* Fila 1 - Columna 2: Perfil de Usuario */}
+            <div className="bg-white rounded-lg shadow-md border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
               <div className="p-2 border-b border-[#1098f7] border-opacity-20 flex-shrink-0">
-                <h3 className="text-xl font-bold text-[#001c55]">
-                  Historial de Casos Clínicos
+                <h3 className="text-base font-bold text-[#001c55]">
+                  Perfil de Usuario
                 </h3>
               </div>
-              <div className="flex-1 overflow-y-auto p-1.5 space-y-1 min-h-0">
-                {historialSimulaciones.map((simulacion) => (
-                  <div
-                    key={simulacion.id}
-                    className="p-1.5 bg-[#f0f8ff] rounded border border-[#1098f7] border-opacity-20 hover:border-opacity-40 transition-all"
-                  >
-                    <div className="flex items-center justify-between gap-1.5 mb-0.5">
-                      <div className="flex items-center gap-1.5 flex-1 min-w-0">
-                        {simulacion.resultado === "correcto" ? (
-                          <FaCheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                        ) : (
-                          <FaTimesCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
-                        )}
-                        <span className="font-semibold text-[#001c55] text-sm truncate">
-                          {simulacion.caso}
-                        </span>
-                      </div>
-                      <div className="text-right flex-shrink-0">
-                        <div className="text-lg font-bold text-[#1098f7]">
-                          {simulacion.nota.toFixed(1)}
-                        </div>
-                      </div>
+              <div className="flex-1 flex flex-col items-center justify-center gap-3 p-4">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#1098f7] to-[#0d7fd6] rounded-full flex items-center justify-center shadow-md">
+                  <FaUser className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-center">
+                  <h4 className="text-lg font-bold text-[#001c55] mb-1">
+                    Dr. Juan Pérez
+                  </h4>
+                  <p className="text-sm text-[#001c55] text-opacity-70">
+                    Médico General
+                  </p>
+                </div>
+                <div className="w-full grid grid-cols-2 gap-2 mt-2">
+                  <div className="text-center p-2 bg-[#f0f8ff] rounded">
+                    <div className="text-xl font-bold text-[#1098f7]">
+                      {historialSimulaciones.length}
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-[#001c55] text-opacity-60">
-                      <span className="flex items-center gap-0.5">
-                        <FaClock className="w-2 h-2" />
-                        {simulacion.duracion}
-                      </span>
-                      <span>{simulacion.fecha}</span>
+                    <div className="text-xs text-[#001c55] text-opacity-60">
+                      Casos
                     </div>
                   </div>
-                ))}
+                  <div className="text-center p-2 bg-[#f0f8ff] rounded">
+                    <div className="text-xl font-bold text-[#1098f7]">
+                      {(
+                        historialSimulaciones.reduce(
+                          (acc, s) => acc + s.nota,
+                          0
+                        ) / historialSimulaciones.length
+                      ).toFixed(1)}
+                    </div>
+                    <div className="text-xs text-[#001c55] text-opacity-60">
+                      Promedio
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -214,6 +217,60 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Fila 2 - Columna 2: Últimos Casos Clínicos */}
+            <div className="bg-white rounded-lg shadow-md border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
+              <div className="p-2 border-b border-[#1098f7] border-opacity-20 flex-shrink-0">
+                <h3 className="text-xl font-bold text-[#001c55]">
+                  Últimos Casos Clínicos
+                </h3>
+              </div>
+              <div className="flex-1 overflow-y-auto p-1.5 space-y-1.5 min-h-0">
+                {historialSimulaciones.map((simulacion) => (
+                  <div
+                    key={simulacion.id}
+                    className="p-1.5 bg-[#f0f8ff] rounded border border-[#1098f7] border-opacity-20 hover:border-opacity-40 transition-all"
+                  >
+                    <div className="flex items-start justify-between gap-1.5 mb-1">
+                      <div className="flex items-center gap-1.5 flex-1 min-w-0">
+                        {simulacion.resultado === "correcto" ? (
+                          <FaCheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        ) : (
+                          <FaTimesCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
+                        )}
+                        <span className="font-semibold text-[#001c55] text-sm truncate">
+                          {simulacion.caso}
+                        </span>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <div className="text-lg font-bold text-[#1098f7]">
+                          {simulacion.nota.toFixed(1)}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 text-xs text-[#001c55] text-opacity-60">
+                        <span className="flex items-center gap-0.5">
+                          <FaClock className="w-2 h-2" />
+                          {simulacion.duracion}
+                        </span>
+                        <span>{simulacion.fecha}</span>
+                      </div>
+                      <button
+                        onClick={() => {
+                          // Aquí puedes agregar la lógica para revisar el caso
+                          router.push(`/casos-clinicos?id=${simulacion.id}`);
+                        }}
+                        className="flex items-center gap-1 text-[#1098f7] hover:text-[#0d7fd6] text-[10px] font-medium hover:underline transition-all duration-200"
+                      >
+                        Revisar
+                        <FaArrowRight className="w-2.5 h-2.5" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

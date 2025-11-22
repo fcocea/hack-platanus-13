@@ -95,7 +95,7 @@ export default function Home() {
             {/* Fila 1 y 2 - Columna 2: Historial de Casos Clínicos */}
             <div className="row-span-2 bg-white rounded-lg shadow-lg border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
               <div className="p-2 border-b border-[#1098f7] border-opacity-20 flex-shrink-0">
-                <h3 className="text-base font-bold text-[#001c55]">
+                <h3 className="text-xl font-bold text-[#001c55]">
                   Historial de Casos Clínicos
                 </h3>
               </div>
@@ -108,21 +108,21 @@ export default function Home() {
                     <div className="flex items-center justify-between gap-1.5 mb-0.5">
                       <div className="flex items-center gap-1.5 flex-1 min-w-0">
                         {simulacion.resultado === "correcto" ? (
-                          <FaCheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
+                          <FaCheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                         ) : (
-                          <FaTimesCircle className="w-3 h-3 text-red-500 flex-shrink-0" />
+                          <FaTimesCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                         )}
-                        <span className="font-semibold text-[#001c55] text-xs truncate">
+                        <span className="font-semibold text-[#001c55] text-sm truncate">
                           {simulacion.caso}
                         </span>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <div className="text-base font-bold text-[#1098f7]">
+                        <div className="text-lg font-bold text-[#1098f7]">
                           {simulacion.nota.toFixed(1)}
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 text-[10px] text-[#001c55] text-opacity-60">
+                    <div className="flex items-center gap-2 text-xs text-[#001c55] text-opacity-60">
                       <span className="flex items-center gap-0.5">
                         <FaClock className="w-2 h-2" />
                         {simulacion.duracion}

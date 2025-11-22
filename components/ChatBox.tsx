@@ -5,9 +5,10 @@ import type { ClinicalCase, ChatMessage } from "@/types/case";
 
 interface ChatBoxProps {
   clinicalCase: ClinicalCase;
+  onMessagesChange?: (messages: ChatMessage[]) => void;
 }
 
-export default function ChatBox({ clinicalCase }: ChatBoxProps) {
+export default function ChatBox({ clinicalCase, onMessagesChange }: ChatBoxProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
@@ -26,6 +27,10 @@ export default function ChatBox({ clinicalCase }: ChatBoxProps) {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    onMessagesChange?.(messages);
+  }, [messages, onMessagesChange]);
 
   async function handleSend() {
     if (!input.trim() || loading) return;

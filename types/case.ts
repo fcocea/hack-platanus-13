@@ -44,3 +44,25 @@ export interface ChatMessage {
   content: string;
   timestamp?: Date;
 }
+
+export interface FeedbackResult {
+  puntajes: {
+    motivo_consulta: number;
+    sintomas_relevantes: number;
+    antecedentes: number;
+    red_flags: number;
+    razonamiento_clinico: number;
+    comunicacion: number;
+  };
+  comentarios: {
+    fortalezas: string[];
+    debilidades: string[];
+    sugerencias: string[];
+  };
+  diagnostico: {
+    estudiante: string;
+    correcto: boolean;
+    diagnostico_real: string;
+    comentario: string;
+  };
+}

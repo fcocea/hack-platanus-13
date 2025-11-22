@@ -99,29 +99,21 @@ export default function Home() {
                   Perfil de Usuario
                 </h3>
               </div>
-              <div className="flex-1 flex flex-col items-center justify-center gap-3 p-4">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#1098f7] to-[#0d7fd6] rounded-full flex items-center justify-center shadow-md">
-                  <FaUser className="w-10 h-10 text-white" />
-                </div>
-                <div className="text-center">
-                  <h4 className="text-lg font-bold text-[#001c55] mb-1">
-                    Dr. Juan Pérez
+              <div className="flex-1 flex flex-col gap-2 p-3 min-h-0">
+                <div>
+                  <h4 className="text-lg font-bold text-[#001c55] mb-0.5">
+                    Juan Pérez
                   </h4>
+                  <p className="text-sm text-[#001c55] text-opacity-70 mb-0.5">
+                    Estudiante de medicina
+                  </p>
                   <p className="text-sm text-[#001c55] text-opacity-70">
-                    Médico General
+                    Especialidad: Cardiología
                   </p>
                 </div>
-                <div className="w-full grid grid-cols-2 gap-2 mt-2">
-                  <div className="text-center p-2 bg-[#f0f8ff] rounded">
-                    <div className="text-xl font-bold text-[#1098f7]">
-                      {historialSimulaciones.length}
-                    </div>
-                    <div className="text-xs text-[#001c55] text-opacity-60">
-                      Casos
-                    </div>
-                  </div>
-                  <div className="text-center p-2 bg-[#f0f8ff] rounded">
-                    <div className="text-xl font-bold text-[#1098f7]">
+                <div className="grid grid-cols-2 gap-1.5">
+                  <div className="p-1.5 bg-[#f0f8ff] rounded">
+                    <div className="text-base font-bold text-[#1098f7]">
                       {(
                         historialSimulaciones.reduce(
                           (acc, s) => acc + s.nota,
@@ -132,6 +124,22 @@ export default function Home() {
                     <div className="text-xs text-[#001c55] text-opacity-60">
                       Promedio
                     </div>
+                  </div>
+                  <div className="p-1.5 bg-[#f0f8ff] rounded">
+                    <div className="text-base font-bold text-[#1098f7]">
+                      5
+                    </div>
+                    <div className="text-xs text-[#001c55] text-opacity-60">
+                      Racha semanal
+                    </div>
+                  </div>
+                </div>
+                <div className="p-1.5 bg-[#f0f8ff] rounded">
+                  <div className="text-sm font-bold text-[#1098f7]">
+                    Cardiología
+                  </div>
+                  <div className="text-xs text-[#001c55] text-opacity-60">
+                    Categoría favorita
                   </div>
                 </div>
               </div>

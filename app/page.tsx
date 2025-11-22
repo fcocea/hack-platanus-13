@@ -14,7 +14,7 @@ export default function Home() {
     setIsLoading(true);
     // Después de 3 segundos, navegar a antecedentes médicos
     setTimeout(() => {
-      router.push("/casos-clinicos");
+      router.push("/antecedentes-medicos");
     }, 3000);
   };
 
@@ -87,7 +87,7 @@ export default function Home() {
           <div className="mb-1.5 flex-shrink-0">
             <h1 className="text-xl font-bold text-[#001c55]">
               ¡Bienvenido de vuelta! 👋
-            </h1>
+          </h1>
           </div>
 
           {/* Grid 2x2 */}
@@ -106,8 +106,8 @@ export default function Home() {
             </button>
 
             {/* Fila 1 - Columna 2: Perfil de Usuario */}
-            <div className="bg-white rounded-lg shadow-md border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
-              <div className="p-2 border-b border-[#1098f7] border-opacity-20 flex-shrink-0">
+            <div className="bg-white rounded-lg shadow-md border-[0.5px] border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
+              <div className="p-2 border-b-[0.5px] border-[#1098f7] border-opacity-20 flex-shrink-0">
                 <h3 className="text-base font-bold text-[#001c55]">
                   Perfil de Usuario
                 </h3>
@@ -122,8 +122,8 @@ export default function Home() {
                   </p>
                   <p className="text-sm text-[#001c55] text-opacity-70">
                     Especialidad: Cardiología
-                  </p>
-                </div>
+          </p>
+        </div>
                 <div className="grid grid-cols-2 gap-1.5 flex-shrink-0">
                   <div className="p-1 bg-[#f0f8ff] rounded">
                     <div className="text-xs text-[#001c55] text-opacity-60 mb-0.5">
@@ -167,8 +167,8 @@ export default function Home() {
             </div>
 
             {/* Fila 2 - Columna 1: Gráfico de Desempeño */}
-            <div className="bg-white rounded-lg shadow-md border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
-              <div className="p-2 border-b border-[#1098f7] border-opacity-20 flex-shrink-0">
+            <div className="bg-white rounded-lg shadow-md border-[0.5px] border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
+              <div className="p-2 border-b-[0.5px] border-[#1098f7] border-opacity-20 flex-shrink-0">
                 <h3 className="text-base font-bold text-[#001c55]">
                   Desempeño Semanal
                 </h3>
@@ -211,7 +211,7 @@ export default function Home() {
                 </div>
 
                 {/* Estadísticas resumidas */}
-                <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#1098f7] border-opacity-20 flex-shrink-0">
+                <div className="grid grid-cols-3 gap-2 pt-2 border-t-[0.5px] border-[#1098f7] border-opacity-20 flex-shrink-0">
                   <div className="text-center">
                     <div className="text-lg font-bold text-[#1098f7]">
                       {historialSimulaciones.length}
@@ -250,8 +250,8 @@ export default function Home() {
             </div>
 
             {/* Fila 2 - Columna 2: Últimos Casos Clínicos */}
-            <div className="bg-white rounded-lg shadow-md border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
-              <div className="p-2 border-b border-[#1098f7] border-opacity-20 flex-shrink-0">
+            <div className="bg-white rounded-lg shadow-md border-[0.5px] border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
+              <div className="p-2 border-b-[0.5px] border-[#1098f7] border-opacity-20 flex-shrink-0">
                 <h3 className="text-xl font-bold text-[#001c55]">
                   Últimos Casos Clínicos
                 </h3>
@@ -260,7 +260,7 @@ export default function Home() {
                 {historialSimulaciones.map((simulacion) => (
                   <div
                     key={simulacion.id}
-                    className="p-1.5 bg-[#f0f8ff] rounded border border-[#1098f7] border-opacity-20 hover:border-opacity-40 transition-all"
+                    className="p-1.5 bg-[#f0f8ff] rounded border-[0.5px] border-[#1098f7] border-opacity-20 hover:border-opacity-40 transition-all"
                   >
                     <div className="flex items-start justify-between gap-1.5 mb-1">
                       <div className="flex items-center gap-1.5 flex-1 min-w-0">
@@ -290,7 +290,7 @@ export default function Home() {
                       <button
                         onClick={() => {
                           // Aquí puedes agregar la lógica para revisar el caso
-                          router.push(`/casos-clinicos?id=${simulacion.id}`);
+                          router.push(`/antecedentes-medicos?id=${simulacion.id}`);
                         }}
                         className="flex items-center gap-1 text-[#1098f7] hover:text-[#0d7fd6] text-[10px] font-medium hover:underline transition-all duration-200"
                       >

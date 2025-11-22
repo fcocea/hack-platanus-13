@@ -1,3 +1,5 @@
+import { FaUser } from "react-icons/fa";
+
 interface AntecedentesMedicosProps {
   nombre: string;
   edad: number;
@@ -26,21 +28,6 @@ export default function AntecedentesMedicos({
       </h2>
 
       <div className="flex gap-2 mb-4 items-center">
-        <div className="flex items-center justify-center">
-          <svg
-            className="w-16 h-16 text-[#1098f7]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-            />
-          </svg>
-        </div>
         <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
             <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide">
@@ -69,6 +56,9 @@ export default function AntecedentesMedicos({
             </label>
             <p className="text-sm text-[#00072d]">{ocupacion}</p>
           </div>
+        </div>
+        <div className="flex items-center justify-center flex-shrink-0">
+          <FaUser className="w-16 h-16 text-[#1098f7]" />
         </div>
       </div>
 

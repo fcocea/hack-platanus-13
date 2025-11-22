@@ -1,11 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaStethoscope, FaClock, FaCheckCircle, FaTimesCircle, FaUser, FaArrowRight } from "react-icons/fa";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Dot } from "recharts";
+import LoadingScreen from "./components/utils/LoadingScreen";
 
 export default function Home() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleStartSimulation = () => {
+    setIsLoading(true);
+    // Después de 3 segundos, navegar al simulador
+    setTimeout(() => {
+      router.push("/simulador");
+    }, 3000);
+  };
 
   // Función para convertir porcentaje a nota chilena (1-7)
   const convertirANota = (porcentaje: number): number => {
@@ -67,7 +78,9 @@ export default function Home() {
   const maxValor = 7; // Máximo de la escala chilena
 
   return (
-    <div className="h-[85vh] bg-gradient-to-br from-[#ffffff] via-[#f0f8ff] to-[#e6f3ff] font-sans overflow-hidden flex flex-col">
+    <>
+      {isLoading && <LoadingScreen />}
+      <div className="h-[85vh] bg-gradient-to-br from-[#ffffff] via-[#f0f8ff] to-[#e6f3ff] font-sans overflow-hidden flex flex-col">
       <main className="flex-1 overflow-hidden min-h-0">
         <div className="h-full max-w-7xl mx-auto px-2 py-1.5 flex flex-col">
           {/* Saludo de Bienvenida */}
@@ -81,7 +94,7 @@ export default function Home() {
           <div className="flex-1 grid grid-cols-2 grid-rows-2 gap-1.5 min-h-0">
             {/* Fila 1 - Columna 1: Botón Iniciar Simulación */}
             <button
-              onClick={() => router.push("/simulador")}
+              onClick={handleStartSimulation}
               className="bg-gradient-to-br from-[#1098f7] to-[#0d7fd6] rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] hover:from-[#0e85e0] hover:to-[#0c7cc5] transition-all duration-300 flex flex-col items-center justify-center gap-2 p-3 group min-h-0 active:scale-[0.98]"
             >
               <FaStethoscope className="w-12 h-12 text-white drop-shadow-lg group-hover:scale-105 transition-transform duration-300" />
@@ -293,5 +306,6 @@ export default function Home() {
         </div>
       </main>
     </div>
+    </>
   );
 }

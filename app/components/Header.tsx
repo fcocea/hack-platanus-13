@@ -7,7 +7,7 @@ export default function Header() {
     <header className="bg-gradient-to-r from-[#1098f7] to-[#0d7fd6] text-white shadow-md flex-shrink-0">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+          <div className="w-10 h-10 bg-white rounded flex items-center justify-center">
             <FaHeartbeat className="w-6 h-6 text-[#1098f7]" />
           </div>
           <div>

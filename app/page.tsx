@@ -2,8 +2,8 @@ import AntecedentesMedicos from "./components/medical-history/AntecedentesMedico
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black py-12 px-4">
-      <main className="flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-[#ffffff] font-sans py-12 px-4">
+      <main className="flex flex-col items-center justify-center max-w-2xl mx-auto">
         <AntecedentesMedicos
           nombre="Juan Pérez García"
           edad={45}

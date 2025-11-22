@@ -82,18 +82,18 @@ export default function Home() {
             {/* Fila 1 - Columna 1: Botón Iniciar Simulación */}
             <button
               onClick={() => router.push("/simulador")}
-              className="bg-gradient-to-br from-[#1098f7] to-[#0d7fd6] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center gap-2 p-3 group min-h-0"
+              className="bg-gradient-to-br from-[#1098f7] to-[#0d7fd6] rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] hover:from-[#0e85e0] hover:to-[#0c7cc5] transition-all duration-300 flex flex-col items-center justify-center gap-2 p-3 group min-h-0 active:scale-[0.98]"
             >
-              <FaStethoscope className="w-12 h-12 text-white drop-shadow-lg" />
+              <FaStethoscope className="w-12 h-12 text-white drop-shadow-lg group-hover:scale-105 transition-transform duration-300" />
               <div className="text-center">
-                <h2 className="text-lg font-bold text-white">
+                <h2 className="text-lg font-bold text-white group-hover:scale-[1.02] transition-transform duration-300">
                   Iniciar Simulación
                 </h2>
               </div>
             </button>
 
             {/* Fila 1 y 2 - Columna 2: Historial de Casos Clínicos */}
-            <div className="row-span-2 bg-white rounded-lg shadow-lg border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
+            <div className="row-span-2 bg-white rounded-lg shadow-md border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
               <div className="p-2 border-b border-[#1098f7] border-opacity-20 flex-shrink-0">
                 <h3 className="text-xl font-bold text-[#001c55]">
                   Historial de Casos Clínicos
@@ -135,7 +135,7 @@ export default function Home() {
             </div>
 
             {/* Fila 2 - Columna 1: Gráfico de Desempeño */}
-            <div className="bg-white rounded-lg shadow-lg border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
+            <div className="bg-white rounded-lg shadow-md border border-[#1098f7] border-opacity-20 flex flex-col overflow-hidden min-h-0">
               <div className="p-2 border-b border-[#1098f7] border-opacity-20 flex-shrink-0">
                 <h3 className="text-base font-bold text-[#001c55]">
                   Desempeño Semanal

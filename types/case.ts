@@ -4,7 +4,7 @@ export interface ClinicalCase {
   nivel_dificultad: "facil" | "medio" | "dificil";
   paciente: {
     edad: number;
-    sexo: string;
+    sexo:  "masculino" | "femenino" | "otro";
     ocupacion: string;
     contexto_ingreso: string;
   };

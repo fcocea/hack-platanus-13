@@ -37,7 +37,7 @@ export default function Home() {
               contextoIngreso="Paciente acude a consulta ambulatoria por primera vez. Refiere episodios de cefalea que han aumentado en frecuencia en las últimas semanas."
               medicamentosYAlergias="Medicamentos actuales: Losartán 50mg diario. Alergias conocidas: Penicilina (reacción cutánea leve)"
             />
-          <button className="w-full bg-[#1098f7] hover:bg-[#0d7fd6] text-white font-semibold py-3 mt-1 px-6 rounded-lg shadow-md transition-colors duration-200">
+          <button className="w-full bg-[#1098f7] hover:bg-[#0d7fd6] text-white font-semibold py-3 mt-4 px-6 rounded-lg shadow-md transition-colors duration-200">
             Comenzar Consulta
           </button>
           </div>

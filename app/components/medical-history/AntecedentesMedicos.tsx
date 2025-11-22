@@ -20,74 +20,91 @@ export default function AntecedentesMedicos({
   medicamentosYAlergias,
 }: AntecedentesMedicosProps) {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-[#ffffff] rounded-lg shadow-lg border border-[#1098f7] p-6">
-      <h2 className="text-2xl font-bold text-[#00072d] mb-6 pb-4 border-b border-[#1098f7]">
+    <div className="w-full max-w-2xl mx-auto bg-[#ffffff] rounded-lg shadow-lg border border-[#1098f7] p-4">
+      <h2 className="text-xl font-bold text-[#00072d] mb-4 pb-3 border-b border-[#1098f7]">
         Antecedentes Médicos
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-1">
-          <label className="text-sm font-semibold text-[#001c55] uppercase tracking-wide">
-            Nombre completo
-          </label>
-          <p className="text-base text-[#00072d]">{nombre}</p>
+      <div className="flex gap-2 mb-4 items-center">
+        <div className="flex items-center justify-center">
+          <svg
+            className="w-16 h-16 text-[#1098f7]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            />
+          </svg>
         </div>
+        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide">
+              Nombre completo
+            </label>
+            <p className="text-sm text-[#00072d]">{nombre}</p>
+          </div>
 
-        <div className="space-y-1">
-          <label className="text-sm font-semibold text-[#001c55] uppercase tracking-wide">
-            Edad
-          </label>
-          <p className="text-base text-[#00072d]">{edad} años</p>
-        </div>
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide">
+              Edad
+            </label>
+            <p className="text-sm text-[#00072d]">{edad} años</p>
+          </div>
 
-        <div className="space-y-1">
-          <label className="text-sm font-semibold text-[#001c55] uppercase tracking-wide">
-            Sexo
-          </label>
-          <p className="text-base text-[#00072d]">{sexo}</p>
-        </div>
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide">
+              Sexo
+            </label>
+            <p className="text-sm text-[#00072d]">{sexo}</p>
+          </div>
 
-        <div className="space-y-1">
-          <label className="text-sm font-semibold text-[#001c55] uppercase tracking-wide">
-            Ocupación
-          </label>
-          <p className="text-base text-[#00072d]">{ocupacion}</p>
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide">
+              Ocupación
+            </label>
+            <p className="text-sm text-[#00072d]">{ocupacion}</p>
+          </div>
         </div>
       </div>
 
-      <div className="mt-6 space-y-6">
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-[#001c55] uppercase tracking-wide block">
+      <div className="mt-4 space-y-4">
+        <div className="space-y-1">
+          <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide block">
             Motivo de consulta
           </label>
-          <p className="text-base text-[#00072d] leading-relaxed whitespace-pre-line">
+          <p className="text-sm text-[#00072d] leading-relaxed whitespace-pre-line">
             {motivoConsulta}
           </p>
         </div>
 
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-[#001c55] uppercase tracking-wide block">
+        <div className="space-y-1">
+          <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide block">
             Antecedentes personales
           </label>
-          <p className="text-base text-[#00072d] leading-relaxed whitespace-pre-line">
+          <p className="text-sm text-[#00072d] leading-relaxed whitespace-pre-line">
             {antecedentesPersonales}
           </p>
         </div>
 
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-[#001c55] uppercase tracking-wide block">
+        <div className="space-y-1">
+          <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide block">
             Contexto del ingreso
           </label>
-          <p className="text-base text-[#00072d] leading-relaxed whitespace-pre-line">
+          <p className="text-sm text-[#00072d] leading-relaxed whitespace-pre-line">
             {contextoIngreso}
           </p>
         </div>
 
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-[#001c55] uppercase tracking-wide block">
+        <div className="space-y-1">
+          <label className="text-xs font-semibold text-[#001c55] uppercase tracking-wide block">
             Medicamentos y alergias
           </label>
-          <p className="text-base text-[#00072d] leading-relaxed whitespace-pre-line">
+          <p className="text-sm text-[#00072d] leading-relaxed whitespace-pre-line">
             {medicamentosYAlergias}
           </p>
         </div>

@@ -18,7 +18,7 @@ export default function Header() {
               <FaStethoscope className="w-4 h-4 text-white opacity-80" />
             </div>
             <p className="text-xs text-white text-opacity-90 font-medium">
-              Sistema de Gestión Médica
+              Tu centro de simulación virtual
             </p>
           </div>
         </div>

@@ -108,6 +108,10 @@ No generes valores extremos o imposibles.
     }
 
     const clinicalCase = JSON.parse(output) as ClinicalCase;
+    if (!clinicalCase.paciente || !clinicalCase.motivo_consulta) {
+      throw new Error("Caso incompleto");
+    }
+
 
     // Generar un ID único si no viene en la respuesta
     if (!clinicalCase.id) {

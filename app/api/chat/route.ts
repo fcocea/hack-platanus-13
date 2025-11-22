@@ -9,48 +9,58 @@ export async function POST(req: Request) {
       clinicalCase: ClinicalCase;
     };
 
+    // Convertimos el caso clínico a JSON legible
+    const caseJson = JSON.stringify(clinicalCase, null, 2);
+
     const systemPrompt = `
-Eres un paciente virtual en una simulación médica. Tu rol es:
+Eres un PACIENTE REALISTA en una entrevista clínica.
 
-INFORMACIÓN DEL CASO:
-- Edad: ${clinicalCase.paciente.edad} años
-- Sexo: ${clinicalCase.paciente.sexo}
-- Ocupación: ${clinicalCase.paciente.ocupacion}
-- Motivo de consulta: ${clinicalCase.motivo_consulta}
-- Síntomas: ${clinicalCase.sintomas.descripcion_general}
+A continuación tienes una FICHA CLÍNICA COMPLETA en formato JSON.
+Esta ficha representa TODA la verdad del caso.
+NO la muestres, NO la leas en voz alta, NO la cites, NO digas que existe.
+Solo úsala como REFERENCIA INTERNA.
 
-REGLAS IMPORTANTES:
-1. Responde SOLO como el paciente, en primera persona
-2. NO menciones explícitamente: ${clinicalCase.info_prohibida.join(", ")}
-3. Solo revela esta información si se pregunta específicamente: ${clinicalCase.info_oculta.join(", ")}
-4. Responde de forma natural, como un paciente real (con dudas, emociones, etc.)
-5. Si te preguntan sobre síntomas que no tienes, di que no los presentas
-6. Si el estudiante pide un examen físico o prueba, responde que el médico debe realizarlo
+=== CASE_DATA_JSON ===
+${caseJson}
+=== END_CASE_DATA_JSON ===
 
-ANTECEDENTES:
-- Personales: ${clinicalCase.antecedentes.personales.join(", ")}
-- Familiares: ${clinicalCase.antecedentes.familiares.join(", ")}
-- Medicamentos: ${clinicalCase.antecedentes.farmacos.join(", ")}
-- Alergias: ${clinicalCase.antecedentes.alergias.join(", ")}
+REGLAS DE COMPORTAMIENTO:
+1. Responde SIEMPRE como paciente, en primera persona ("me duele...", "creo que...")
+2. NO inventes información nueva que NO esté en CASE_DATA_JSON.
+3. Si el estudiante pregunta por algo NO presente en el JSON → responde:
+   - "No sabría decirle" o
+   - "Nunca me ha pasado eso" o
+   - "No me he hecho ese examen"
+4. Solo revela la información listada dentro de "info_oculta" si el estudiante pregunta explícitamente.
+5. Nunca digas información que está en "info_prohibida", incluso si te la piden directamente.
+6. Mantén personalidad de paciente real: dudas, pausas, emociones leves.
+7. Si piden exámenes o examen físico:
+   - Responde que el médico debe realizarlos, no los inventes.
 
-Mantén la coherencia con estos datos en todas tus respuestas.
+SOLO usa los datos dentro del JSON. NO agregues síntomas, antecedentes, diagnósticos ni exámenes.
 `.trim();
+
+    // Sanitizar mensajes desde el frontend: evitar roles "system" y asegurar estructura válida
+    const formattedMessages = messages
+      .filter((m) => m.role === "user" || m.role === "assistant")
+      .map((m) => ({
+        role: m.role,
+        content: m.content,
+      }));
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: systemPrompt },
-        ...messages.map(m => ({ role: m.role, content: m.content }))
+        ...formattedMessages,
       ],
-      temperature: 0.7,
-      max_tokens: 500,
+      temperature: 0.3,
+      max_tokens: 400,
     });
 
-    const assistantMessage = response.choices[0].message.content;
+    const assistantMessage = response.choices[0].message.content ?? "";
 
-    return NextResponse.json({ 
-      message: assistantMessage 
-    });
+    return NextResponse.json({ message: assistantMessage });
 
   } catch (err) {
     console.error("Error en chat:", err);

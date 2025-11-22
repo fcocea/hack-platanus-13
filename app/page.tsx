@@ -12,9 +12,9 @@ export default function Home() {
 
   const handleStartSimulation = () => {
     setIsLoading(true);
-    // Después de 3 segundos, navegar al simulador
+    // Después de 3 segundos, navegar a antecedentes médicos
     setTimeout(() => {
-      router.push("/simulador");
+      router.push("/casos-clinicos");
     }, 3000);
   };
 

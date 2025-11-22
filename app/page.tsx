@@ -99,8 +99,8 @@ export default function Home() {
                   Perfil de Usuario
                 </h3>
               </div>
-              <div className="flex-1 flex flex-col gap-2 p-3 min-h-0">
-                <div>
+              <div className="flex-1 flex flex-col gap-1.5 p-2 min-h-0 overflow-hidden">
+                <div className="flex-shrink-0">
                   <h4 className="text-lg font-bold text-[#001c55] mb-0.5">
                     Juan Pérez
                   </h4>
@@ -111,8 +111,11 @@ export default function Home() {
                     Especialidad: Cardiología
                   </p>
                 </div>
-                <div className="grid grid-cols-2 gap-1.5">
-                  <div className="p-1.5 bg-[#f0f8ff] rounded">
+                <div className="grid grid-cols-2 gap-1.5 flex-shrink-0">
+                  <div className="p-1 bg-[#f0f8ff] rounded">
+                    <div className="text-xs text-[#001c55] text-opacity-60 mb-0.5">
+                      Promedio
+                    </div>
                     <div className="text-base font-bold text-[#1098f7]">
                       {(
                         historialSimulaciones.reduce(
@@ -121,25 +124,30 @@ export default function Home() {
                         ) / historialSimulaciones.length
                       ).toFixed(1)}
                     </div>
-                    <div className="text-xs text-[#001c55] text-opacity-60">
-                      Promedio
-                    </div>
                   </div>
-                  <div className="p-1.5 bg-[#f0f8ff] rounded">
+                  <div className="p-1 bg-[#f0f8ff] rounded">
+                    <div className="text-xs text-[#001c55] text-opacity-60 mb-0.5">
+                      Racha semanal
+                    </div>
                     <div className="text-base font-bold text-[#1098f7]">
                       5
                     </div>
-                    <div className="text-xs text-[#001c55] text-opacity-60">
-                      Racha semanal
-                    </div>
                   </div>
                 </div>
-                <div className="p-1.5 bg-[#f0f8ff] rounded">
+                <div className="p-1 bg-[#f0f8ff] rounded flex-shrink-0">
+                  <div className="text-xs text-[#001c55] text-opacity-60 mb-0.5">
+                    Categoría favorita
+                  </div>
                   <div className="text-sm font-bold text-[#1098f7]">
                     Cardiología
                   </div>
-                  <div className="text-xs text-[#001c55] text-opacity-60">
-                    Categoría favorita
+                </div>
+                <div className="p-1 bg-[#f0f8ff] rounded flex-shrink-0">
+                  <div className="text-xs text-[#001c55] text-opacity-70">
+                    Última simulación hecha en el día
+                  </div>
+                  <div className="text-sm font-bold text-[#1098f7] mt-0.5">
+                    {historialSimulaciones.length > 0 ? historialSimulaciones[0].fecha : "N/A"}
                   </div>
                 </div>
               </div>

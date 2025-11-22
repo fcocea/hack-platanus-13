@@ -13,7 +13,7 @@ export default function Home() {
     // Simular carga - aquí puedes agregar tu lógica de navegación o API call
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 5000);
   };
 
   return (

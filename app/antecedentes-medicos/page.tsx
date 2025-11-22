@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import AntecedentesMedicos from "../components/medical-history/AntecedentesMedicos";
 
-export default function CasosClinicosPage() {
+export default function AntecedentesMedicosPage() {
   const router = useRouter();
 
   // Datos de ejemplo del paciente
@@ -21,14 +21,6 @@ export default function CasosClinicosPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#ffffff] via-[#f0f8ff] to-[#e6f3ff] flex flex-col">
       <div className="flex-1 flex flex-col items-center justify-center p-4">
-        <div className="mb-4">
-          <button
-            onClick={() => router.back()}
-            className="bg-[#1098f7] hover:bg-[#0d7fd6] text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
-          >
-            Volver
-          </button>
-        </div>
         <AntecedentesMedicos
           nombre={pacienteData.nombre}
           edad={pacienteData.edad}
@@ -54,5 +46,4 @@ export default function CasosClinicosPage() {
     </div>
   );
 }
-
 
